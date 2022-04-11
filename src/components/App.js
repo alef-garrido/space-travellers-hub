@@ -1,9 +1,9 @@
-import Navbar from "./Navbar";
+import NavLink from './NavLink';
 
 function App() {
   return (
     <div className="app">
-       <Navbar />
+      <NavLink />
     </div>
   );
 }

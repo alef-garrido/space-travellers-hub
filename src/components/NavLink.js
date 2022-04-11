@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import './Styles/navlink.css';
 
-function Navbar() {
+function NavLink() {
   const links = [
     {
       id: 1,
@@ -19,15 +20,18 @@ function Navbar() {
     }];
 
   return (
-    <nav>
+    <nav className="nav--container">
       <h1>Space Travelers&apos; Hub</h1>
-      <ul>
+      <ul className="nav--list">
         {links.map((link) => (
           <li
             key={link.id}
             className="nav--item"
           >
-            <Link to={link.path}>
+            <Link
+              className="item--link"
+              to={link.path}
+            >
               {link.text}
             </Link>
           </li>
@@ -37,4 +41,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavLink;
