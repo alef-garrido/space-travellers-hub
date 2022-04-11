@@ -29,4 +29,5 @@
 
 .item--link:focus {
   color: red;
+  text-decoration: underline;
 }
