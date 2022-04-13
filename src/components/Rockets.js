@@ -34,15 +34,17 @@ function Rockets() {
               />
             </div>
             <div className="item--info-container">
-              <p>{item.rocket_name}</p>
-              <p>{item.description}</p>
+              <p className="info--title">{item.rocket_name}</p>
+              <p className="info--description">{item.description}</p>
               <button
+                className="info--btn-reserve"
                 type="button"
                 onClick={reserveHandler}
               >
                 Reserve Rocket
               </button>
               <button
+                className="info--btn-cancel"
                 type="button"
                 onClick={cancellationHandler}
               >

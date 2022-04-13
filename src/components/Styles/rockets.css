@@ -23,11 +23,29 @@
   flex-direction: column;
 }
 
-.item--info-container *{
+.item--info-container * {
   margin: 0 0 1rem 1rem;
   padding: 0;
 }
 
 .item--info-container button {
   width: fit-content;
+}
+
+.info--title {
+  font-family: sans-serif;
+  font-size: 1.3rem;
+}
+
+.info--description {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+}
+
+.info--btn-reserve {
+  background-color: blueviolet;
+  color: aliceblue;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
