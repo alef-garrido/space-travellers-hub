@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import apiCalls from './middlware/apiCalls';
 import rockets from './slices/rockets-dux';
 
 const rootReducer = combineReducers({
@@ -7,6 +8,12 @@ const rootReducer = combineReducers({
   // Missions: missions,
 });
 
-const store = configureStore({ reducer: rootReducer });
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [
+    ...getDefaultMiddleware(),
+    apiCalls,
+  ],
+});
 
 export default store;

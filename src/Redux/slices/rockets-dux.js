@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAction } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'rockets',
@@ -21,25 +21,21 @@ const slice = createSlice({
   },
 });
 
-const { rocketsReceived, rocketsRequestFailed } = slice.actions;
+export const { rocketsRequested, rocketsReceived, rocketsRequestFailed } = slice.actions;
 
 // Action Creators
 
-export const loadRockets = async (dispatch) => {
-  try {
-    const apiResponse = await fetch('https://api.spacexdata.com/v3/rockets', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => data);
+// to handle API request Stages
+export const apiRequest = createAction('api/Request');
+export const apiRequestSucceed = createAction('api/RequestSucceed');
+export const apiRequestFailed = createAction('api/RequestFailed');
 
-    dispatch({ type: rocketsReceived.type, payload: apiResponse });
-  } catch (error) {
-    dispatch({ type: rocketsRequestFailed.type, payload: error.message });
-  }
-};
+// to handle UI events
+export const loadRockets = () => apiRequest({
+  method: 'GET',
+  onStart: rocketsRequested.type,
+  onSucces: rocketsReceived.type,
+  onError: rocketsRequestFailed.type,
+});
 
 export default slice.reducer;
