@@ -4,8 +4,8 @@ import apiCalls from './middlware/apiCalls';
 import rockets from './slices/rockets-dux';
 
 const rootReducer = combineReducers({
-  Rockets: rockets,
-  // Missions: missions,
+  rockets,
+  // missions,
 });
 
 const store = configureStore({

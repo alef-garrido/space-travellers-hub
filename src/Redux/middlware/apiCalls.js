@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 import { apiRequest, apiRequestFailed, apiRequestSucceed } from '../slices/rockets-dux';
 
 const apiCalls = ({ dispatch }) => (next) => async (action) => {
@@ -22,8 +23,17 @@ const apiCalls = ({ dispatch }) => (next) => async (action) => {
       },
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
-
+      .then((data) => {
+        const newState = data.map((i) => {
+          const {
+            id, rocket_name, rocket_type, flickr_images,
+          } = i;
+          return {
+            id, rocket_name, rocket_type, flickr_images,
+          };
+        });
+        return newState;
+      });
     dispatch(apiRequestSucceed(apiResponse));
     if (onSuccess) dispatch({ type: onSuccess, payload: apiResponse });
   } catch (error) {

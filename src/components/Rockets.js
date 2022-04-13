@@ -3,14 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadRockets } from '../Redux/slices/rockets-dux';
 
 function Rockets() {
-  const rockets = useSelector((state) => state.Rockets.list);
+  const rockets = useSelector((state) => state.rockets);
+  const { list, isLoading } = rockets;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadRockets());
   }, []);
-  console.log(rockets);
   return (
-    <>Loading</>
+    <ul>
+      {
+      isLoading
+        ? 'loading'
+        : list.map((item) => (
+          <li key={item.id}>
+            <p>{item.rocket_name}</p>
+            <p>{item.rocket_type}</p>
+            <button type="button">Reserve Rocket</button>
+          </li>
+        ))
+      }
+    </ul>
   );
 }
 

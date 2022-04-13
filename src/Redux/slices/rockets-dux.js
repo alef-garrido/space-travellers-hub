@@ -34,7 +34,7 @@ export const apiRequestFailed = createAction('api/RequestFailed');
 export const loadRockets = () => apiRequest({
   method: 'GET',
   onStart: rocketsRequested.type,
-  onSucces: rocketsReceived.type,
+  onSuccess: rocketsReceived.type,
   onError: rocketsRequestFailed.type,
 });
 
