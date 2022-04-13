@@ -32,11 +32,17 @@ const slice = createSlice({
       const index = state.list.findIndex((i) => i.id === id);
       state.list[index].reserved = true;
     },
+    rocketReservedCanceled: (state, action) => {
+      const id = parseInt(action.payload, 10);
+      const index = state.list.findIndex((i) => i.id === id);
+      state.list[index].reserved = false;
+    },
   },
 });
 
 export const {
   rocketReserved,
+  rocketReservedCanceled,
   rocketsRequested,
   rocketsReceived,
   rocketsRequestFailed,

@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { rocketReserved } from '../Redux/slices/rockets-dux';
+import { rocketReserved, rocketReservedCanceled } from '../Redux/slices/rockets-dux';
 
 function Rockets() {
   const dispatch = useDispatch();
   const rockets = useSelector((state) => state.rockets);
   const { list, isLoading } = rockets;
 
-  const clickHandler = (e) => {
+  const reserveHandler = (e) => {
     dispatch(rocketReserved(e.target.parentNode.id));
+  };
+
+  const cancelationHandler = (e) => {
+    dispatch(rocketReservedCanceled(e.target.parentNode.id));
   };
 
   return (
@@ -22,9 +26,15 @@ function Rockets() {
             <p>{item.rocket_type}</p>
             <button
               type="button"
-              onClick={clickHandler}
+              onClick={reserveHandler}
             >
               Reserve Rocket
+            </button>
+            <button
+              type="button"
+              onClick={cancelationHandler}
+            >
+              Cancel Reservation
             </button>
           </li>
         ))
