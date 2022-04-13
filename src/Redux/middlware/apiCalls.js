@@ -1,16 +1,14 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
-import { apiRequest, apiRequestFailed, apiRequestSucceed } from '../slices/rockets-dux';
+import { apiRequest, apiRequestFailed } from '../slices/rockets-dux';
 
 const apiCalls = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== apiRequest.type) return next(action);
   next(action);
-  const {
-    method, onStart, onSuccess, onError,
-  } = action.payload;
 
-  if (onStart) dispatch({ type: onStart });
-  next(action);
+  const {
+    method, onSuccess, onError,
+  } = action.payload;
 
   try {
     const apiResponse = await fetch(
@@ -34,7 +32,6 @@ const apiCalls = ({ dispatch }) => (next) => async (action) => {
         });
         return newState;
       });
-    dispatch(apiRequestSucceed(apiResponse));
     if (onSuccess) dispatch({ type: onSuccess, payload: apiResponse });
   } catch (error) {
     dispatch(apiRequestFailed(error.message));

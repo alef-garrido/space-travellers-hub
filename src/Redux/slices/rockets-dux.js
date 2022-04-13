@@ -27,13 +27,11 @@ export const { rocketsRequested, rocketsReceived, rocketsRequestFailed } = slice
 
 // to handle API request Stages
 export const apiRequest = createAction('api/Request');
-export const apiRequestSucceed = createAction('api/RequestSucceed');
 export const apiRequestFailed = createAction('api/RequestFailed');
 
 // to handle UI events
 export const loadRockets = () => apiRequest({
   method: 'GET',
-  onStart: rocketsRequested.type,
   onSuccess: rocketsReceived.type,
   onError: rocketsRequestFailed.type,
 });
