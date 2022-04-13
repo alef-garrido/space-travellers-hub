@@ -15,11 +15,12 @@ const slice = createSlice({
     rocketsReceived: (state, action) => {
       state.isLoading = false;
       const newState = action.payload.map((i) => {
+        console.log(i);
         const {
-          id, rocket_name, rocket_type, flickr_images,
+          id, rocket_name, description, flickr_images,
         } = i;
         return {
-          id, rocket_name, rocket_type, flickr_images, reserved: false,
+          id, rocket_name, description, flickr_images, reserved: false,
         };
       });
       state.list = newState;

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { rocketReserved, rocketReservedCanceled } from '../Redux/slices/rockets-dux';
+import './Styles/rockets.css';
 
 function Rockets() {
   const dispatch = useDispatch();
@@ -15,27 +16,39 @@ function Rockets() {
   };
 
   return (
-    <ul>
+    <ul className="list--container">
       {
       isLoading
         ? 'loading'
         : list.map((item) => (
-          <li key={item.id} id={item.id}>
-            <img alt="" src={item.flickr_images[0]} />
-            <p>{item.rocket_name}</p>
-            <p>{item.rocket_type}</p>
-            <button
-              type="button"
-              onClick={reserveHandler}
-            >
-              Reserve Rocket
-            </button>
-            <button
-              type="button"
-              onClick={cancellationHandler}
-            >
-              Cancel Reservation
-            </button>
+          <li
+            key={item.id}
+            id={item.id}
+            className="list--item"
+          >
+            <div className="item--img-container">
+              <img
+                className="item--img"
+                alt=""
+                src={item.flickr_images[0]}
+              />
+            </div>
+            <div className="item--info-container">
+              <p>{item.rocket_name}</p>
+              <p>{item.description}</p>
+              <button
+                type="button"
+                onClick={reserveHandler}
+              >
+                Reserve Rocket
+              </button>
+              <button
+                type="button"
+                onClick={cancellationHandler}
+              >
+                Cancel Reservation
+              </button>
+            </div>
           </li>
         ))
       }
