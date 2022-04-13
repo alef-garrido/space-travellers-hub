@@ -15,7 +15,6 @@ const initialState = {
 
 // Action creater
 
-
 export const fetchMissionsList = () => async (dispatch) => {
   dispatch({
     type: FETCH_MISSIONS_REQUEST,
