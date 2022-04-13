@@ -1,17 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './Styles/myProfile.css';
 
 function MyProfile() {
   const rockets = useSelector((state) => state.rockets.list);
   const reservedList = rockets.filter((rocket) => rocket.reserved === true);
   return (
     <div>
-      <section>
+      <section className="rocket--list-container">
         <h3>My Rockets</h3>
-        <ul className="reserved--list">
+        <ul className="rocket--list">
           {
             rockets
-              ? reservedList.map((rocket) => <li key={rocket.id}>{rocket.rocket_name}</li>)
+              ? reservedList.map((rocket) => <li className="rocket-item" key={rocket.id}>{rocket.rocket_name}</li>)
               : null
           }
         </ul>
