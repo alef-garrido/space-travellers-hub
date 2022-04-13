@@ -1,14 +1,15 @@
 /* eslint-disable consistent-return */
-/* eslint-disable camelcase */
 import { apiRequest, apiRequestFailed } from '../slices/rockets-dux';
 
 const apiCalls = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== apiRequest.type) return next(action);
-  next(action);
 
   const {
-    method, onSuccess, onError,
+    method, onSuccess, onStart, onError,
   } = action.payload;
+
+  if (onStart) dispatch({ type: onStart });
+  next(action);
 
   try {
     const apiResponse = await fetch(
@@ -21,17 +22,7 @@ const apiCalls = ({ dispatch }) => (next) => async (action) => {
       },
     )
       .then((res) => res.json())
-      .then((data) => {
-        const newState = data.map((i) => {
-          const {
-            id, rocket_name, rocket_type, flickr_images,
-          } = i;
-          return {
-            id, rocket_name, rocket_type, flickr_images,
-          };
-        });
-        return newState;
-      });
+      .then((data) => data);
     if (onSuccess) dispatch({ type: onSuccess, payload: apiResponse });
   } catch (error) {
     dispatch(apiRequestFailed(error.message));

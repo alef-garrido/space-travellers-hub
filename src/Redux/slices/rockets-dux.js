@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 import { createSlice, createAction } from '@reduxjs/toolkit';
 
 const slice = createSlice({
@@ -13,15 +14,39 @@ const slice = createSlice({
     },
     rocketsReceived: (state, action) => {
       state.isLoading = false;
-      state.list = action.payload;
+      const newState = action.payload.map((i) => {
+        const {
+          id, rocket_name, rocket_type, flickr_images,
+        } = i;
+        return {
+          id, rocket_name, rocket_type, flickr_images, reserved: false,
+        };
+      });
+      state.list = newState;
     },
     rocketsRequestFailed: (state) => {
       state.isLoading = false;
     },
+    rocketReserved: (state, action) => {
+      const id = parseInt(action.payload, 10);
+      const index = state.list.findIndex((i) => i.id === id);
+      state.list[index].reserved = true;
+    },
+    rocketReservedCanceled: (state, action) => {
+      const id = parseInt(action.payload, 10);
+      const index = state.list.findIndex((i) => i.id === id);
+      state.list[index].reserved = false;
+    },
   },
 });
 
-export const { rocketsRequested, rocketsReceived, rocketsRequestFailed } = slice.actions;
+export const {
+  rocketReserved,
+  rocketReservedCanceled,
+  rocketsRequested,
+  rocketsReceived,
+  rocketsRequestFailed,
+} = slice.actions;
 
 // Action Creators
 
@@ -31,7 +56,9 @@ export const apiRequestFailed = createAction('api/RequestFailed');
 
 // to handle UI events
 export const loadRockets = () => apiRequest({
+  url: '/rockets',
   method: 'GET',
+  onStart: rocketsRequested.type,
   onSuccess: rocketsReceived.type,
   onError: rocketsRequestFailed.type,
 });
