@@ -41,7 +41,7 @@ export const fetchMissionsList = () => async (dispatch) => {
 
 // Reducers
 
-const missionsReducer = (state = initialState, action) => {
+const missionsReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_MISSIONS_REQUEST:
       return {
