@@ -19,7 +19,7 @@ const slice = createSlice({
           id, rocket_name, rocket_type, flickr_images,
         } = i;
         return {
-          id, rocket_name, rocket_type, flickr_images,
+          id, rocket_name, rocket_type, flickr_images, reserved: false,
         };
       });
       state.list = newState;
@@ -28,9 +28,9 @@ const slice = createSlice({
       state.isLoading = false;
     },
     rocketReserved: (state, action) => {
-      console.log(action.payload);
-      const index = state.list.findIndex((rocket) => rocket.id === action.payload);
-      console.log(index);
+      const id = parseInt(action.payload, 10);
+      const index = state.list.findIndex((i) => i.id === id);
+      state.list[index].reserved = true;
     },
   },
 });
