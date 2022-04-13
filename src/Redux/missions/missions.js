@@ -13,7 +13,7 @@ const initialState = {
   error: ' ',
 };
 
-// Action creaters
+// Action creators
 
 export const fetchMissionsList = () => async (dispatch) => {
   dispatch({
