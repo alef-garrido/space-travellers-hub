@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 function MyProfile() {
   const rockets = useSelector((state) => state.rockets.list);
+  const reservedList = rockets.filter((rocket) => rocket.reserved === true);
   return (
     <div>
       <section>
@@ -10,7 +11,7 @@ function MyProfile() {
         <ul className="reserved--list">
           {
             rockets
-              ? rockets.map((rocket) => <li key={rocket.id}>{rocket.rocket_name}</li>)
+              ? reservedList.map((rocket) => <li key={rocket.id}>{rocket.rocket_name}</li>)
               : null
           }
         </ul>
