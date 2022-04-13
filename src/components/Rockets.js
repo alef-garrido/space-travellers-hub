@@ -10,7 +10,7 @@ function Rockets() {
     dispatch(rocketReserved(e.target.parentNode.id));
   };
 
-  const cancelationHandler = (e) => {
+  const cancellationHandler = (e) => {
     dispatch(rocketReservedCanceled(e.target.parentNode.id));
   };
 
@@ -32,7 +32,7 @@ function Rockets() {
             </button>
             <button
               type="button"
-              onClick={cancelationHandler}
+              onClick={cancellationHandler}
             >
               Cancel Reservation
             </button>
