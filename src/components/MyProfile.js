@@ -1,6 +1,8 @@
+import React from 'react';
+
 function MyProfile() {
   return (
-    <>Profile</>
+    <h3>Profile</h3>
   );
 }
 
