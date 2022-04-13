@@ -26,7 +26,7 @@ function NavLink() {
         <img src={logo} alt="" />
         <h1>Space Travelers&apos; Hub</h1>
       </div>
-      <ul className="nav--list">
+      <ul className="nav--menu">
         {links.map((link) => (
           <li
             key={link.id}
