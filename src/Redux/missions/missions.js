@@ -76,7 +76,7 @@ const missionsReducer = (state = initialState, action = {}) => {
 
       for (let i = 0; i < newState.missions.length; i += 1) {
         if (newState.missions[i].id === action.id) {
-          newState.missions[i].reserved;
+          newState.missions[i].reserved = !newState.missions[i].reserved;
         }
       }
       return newState;
