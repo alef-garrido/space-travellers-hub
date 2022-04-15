@@ -3,9 +3,6 @@ import { toggleMissionsTrue, toggleMissionsFalse } from '../Redux/missions/missi
 import './Styles/mission.css';
 
 const missionsContainerStyle = {
-  hight: '25rem',
-  display: 'flex',
-  justifyContent: 'center',
   margin: '0 2rem',
 };
 
@@ -50,6 +47,7 @@ function Missions() {
   const loadingStatus = missionLists.loading;
   return (
     <div className="mission_container" style={missionsContainerStyle}>
+      <div className="line" />
       {(loadingStatus === false) ? (
         <table className="table">
           <tbody>
