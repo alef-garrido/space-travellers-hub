@@ -1,17 +1,32 @@
-.d-grid {
-  display: grid;
-  grid-template-columns: 1fr 4fr  1fr;
-  border: 1px solid gray;
+.table {
+  border: 1px solid rgb(206, 194, 194);
 }
 
-.line {
-  width: 1px;
+table {
+  border-spacing: 0;
 }
 
-.d-grid1 {
-  display: grid;
-  grid-template-columns: 1fr  4fr  1fr;
-  border: 1px solid gray;
+tr,
+td {
+  border: 1px solid #bdb4b4;
+  text-align: center;
+  padding: 1rem;
+}
+
+.t-header {
+  padding: 1rem;
+  border: 1px solid #bdb4b4;
+  font-size: 1.5rem;
+}
+
+.table-row:nth-child(even) {
+  background-color: #e8e8e8;
+}
+
+.table-btn {
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
+  border: none;
 }
