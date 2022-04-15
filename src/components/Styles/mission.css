@@ -1,0 +1,17 @@
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 4fr  1fr;
+  border: 1px solid gray;
+}
+
+.line {
+  width: 1px;
+}
+
+.d-grid1 {
+  display: grid;
+  grid-template-columns: 1fr  4fr  1fr;
+  border: 1px solid gray;
+  justify-content: center;
+  align-items: center;
+}
