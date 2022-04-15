@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Styles/navlink.css';
 import logo from '../assets/planet.png';

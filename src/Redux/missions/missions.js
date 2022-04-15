@@ -15,7 +15,6 @@ const TOGGLE_FALSE = 'TOGGLE_FALSE';
 //   error: ' ',
 // };
 const initialState = [];
-// Action creators
 
 export const fetchMissionsList = () => async (dispatch) => {
   dispatch({
