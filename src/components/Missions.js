@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMissionsTrue, toggleMissionsFalse } from '../Redux/missions/missions';
+import './Styles/mission.css';
 
 const missionsContainerStyle = {
   hight: '25rem',
@@ -8,41 +9,6 @@ const missionsContainerStyle = {
   justifyContent: 'center',
   margin: '0 2rem',
 };
-
-// const joinButtonStyle = {
-//   marginLeft: '1rem',
-//   cursor: 'pointer',
-//   padding: '0.2rem 0',
-//   width: '7rem',
-//   height: '2.8rem',
-// };
-
-// const leaveButtonStyle = {
-//   border: '1px solid rgb(255,0,0)',
-//   backgroundColor: 'white',
-//   color: 'red',
-//   cursor: 'pointer',
-//   marginLeft: '1rem',
-//   padding: '0 0.5rem',
-//   width: '7rem',
-//   height: '2.8rem',
-// };
-
-// const membershipStyle = {
-//   backgroundColor: '#00ffff',
-//   color: '#000000',
-//   marginRight: '1rem',
-//   padding: '0.12rem 0',
-//   width: '7rem',
-// };
-
-// const notMemberStyle = {
-//   backgroundColor: '#a9a9a9',
-//   color: '#ffffff',
-//   marginRight: '1rem',
-//   padding: '0.12rem 0',
-//   width: '7rem',
-// };
 
 export default function Missions() {
   const dispatch = useDispatch();
@@ -63,12 +29,16 @@ export default function Missions() {
               <tr key={missions.id} className="table-row">
                 <td className="missions-detail">{missions.name}</td>
                 <td className="missions-detail">{missions.descriptions}</td>
-                <td className="table-btn">
+                <td>
                   {
                 missions.reserved
                   ? (
-                    <div>
-                      <div>Active member</div>
+                    <div className="table-btn">
+                      <button
+                        type="button"
+                      >
+                        Active member
+                      </button>
                       <button
                         onClick={() => dispatch(toggleMissionsFalse(missions.id))}
                         type="button"
@@ -78,11 +48,15 @@ export default function Missions() {
                     </div>
                   )
                   : (
-                    <div>
-                      <div>Not a member</div>
+                    <div className="table-btn">
                       <button
                         type="button"
+                      >
+                        Not a member
+                      </button>
+                      <button
                         onClick={() => dispatch(toggleMissionsTrue(missions.id))}
+                        type="button"
                       >
                         Join mission
                       </button>
