@@ -1,6 +1,6 @@
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMissionsReserved } from '../Redux/missions/missions';
+import { toggleMissionsTrue, toggleMissionsFalse } from '../Redux/missions/missions';
 
 const missionsContainerStyle = {
   hight: '25rem',
@@ -13,6 +13,7 @@ function Missions() {
   const dispatch = useDispatch();
   const missionLists = useSelector((state) => state.missions);
   const loadingStatus = missionLists.loading;
+
   return (
     <div className="mission_container" style={missionsContainerStyle}>
       {(loadingStatus === false) ? (
@@ -26,12 +27,15 @@ function Missions() {
             <div key={missions.id} className="d-grid">
               <h3>{missions.name}</h3>
               <p>{missions.descriptions}</p>
-              <button type="button">
+              <button
+                onClick={() => dispatch(toggleMissionsFalse(missions.id))}
+                type="button"
+              >
                 Leave Mission
               </button>
               <button
                 type="button"
-                onClick={() => dispatch(toggleMissionsReserved(missions.id))}
+                onClick={() => dispatch(toggleMissionsTrue(missions.id))}
               >
                 Join mission
               </button>
