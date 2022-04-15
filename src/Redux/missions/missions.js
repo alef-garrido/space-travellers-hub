@@ -51,7 +51,6 @@ export const toggleMissionsReserved = (id) => (
 // Reducers
 
 const missionsReducer = (state = initialState, action = {}) => {
-  const newState = { ...state };
   switch (action.type) {
     case FETCH_MISSIONS_REQUEST:
       return {
@@ -72,14 +71,19 @@ const missionsReducer = (state = initialState, action = {}) => {
         error: action.payload,
       };
 
-    case TOGGLE_RESERVE:
-
-      for (let i = 0; i < newState.missions.length; i += 1) {
-        if (newState.missions[i].id === action.id) {
-          newState.missions[i].reserved = !newState.missions[i].reserved;
-        }
-      }
-      return newState;
+    case TOGGLE_RESERVE: // this should only set the reserved value to true
+      return {
+        ...state,
+        missions: state.missions.map((i) => {
+          if (i.id !== action.id) return i;
+          return { ...i, reserved: true };
+        }),
+      };
+      // for (let i = 0; i < newState.missions.length; i += 1) {
+      //   if (newState.missions[i].id === action.id) {
+      //     newState.missions[i].reserved = !newState.missions[i].reserved;
+      //   }
+      // }
     default: return state;
   }
 };
