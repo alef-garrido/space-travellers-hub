@@ -60,10 +60,10 @@ function Missions() {
             </tr>
             {missionLists.missions.map((missions) => (
               <tr key={missions.id} className="table-row">
-              <td className="missions-detail">{missions.name}</td>
-              <td className="missions-detail">{missions.descriptions}</td>
-              <td>
-                {
+                <td className="missions-detail">{missions.name}</td>
+                <td className="missions-detail">{missions.descriptions}</td>
+                <td>
+                  {
               missions.reserved
                 ? (
                   <div className="table-btn">
@@ -102,11 +102,11 @@ function Missions() {
                   </div>
                 )
             }
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : <h1>***Loading***</h1>}
     </div>
   );
