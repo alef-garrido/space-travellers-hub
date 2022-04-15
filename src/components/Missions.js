@@ -27,18 +27,31 @@ function Missions() {
             <div key={missions.id} className="d-grid">
               <h3>{missions.name}</h3>
               <p>{missions.descriptions}</p>
-              <button
-                onClick={() => dispatch(toggleMissionsFalse(missions.id))}
-                type="button"
-              >
-                Leave Mission
-              </button>
-              <button
-                type="button"
-                onClick={() => dispatch(toggleMissionsTrue(missions.id))}
-              >
-                Join mission
-              </button>
+              {
+                missions.reserved
+                  ? (
+                    <div>
+                      <div>Active member</div>
+                      <button
+                        onClick={() => dispatch(toggleMissionsFalse(missions.id))}
+                        type="button"
+                      >
+                        Leave Mission
+                      </button>
+                    </div>
+                  )
+                  : (
+                    <div>
+                      <div>Not a member</div>
+                      <button
+                        type="button"
+                        onClick={() => dispatch(toggleMissionsTrue(missions.id))}
+                      >
+                        Join mission
+                      </button>
+                    </div>
+                  )
+              }
             </div>
           ))}
         </div>
