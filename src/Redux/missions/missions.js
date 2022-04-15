@@ -15,7 +15,6 @@ const TOGGLE_FALSE = 'TOGGLE_FALSE';
 //   error: ' ',
 // };
 const initialState = [];
-// Action creators
 
 export const fetchMissionsList = () => async (dispatch) => {
   dispatch({
@@ -79,18 +78,6 @@ const missionsReducer = (state = initialState, action = {}) => {
         loading: false,
         error: action.payload,
       };
-
-    case TOGGLE_TRUE:
-
-      return {
-        ...state,
-        missions: state.missions.map((i) => {
-          if (i.id !== action.id) return i;
-          return { ...i, reserved: true };
-        }),
-      };
-
-    // default: return state;
 
     case TOGGLE_TRUE:
 

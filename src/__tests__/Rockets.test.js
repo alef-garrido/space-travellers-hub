@@ -8,8 +8,7 @@ it('renders correctly', () => {
   const tree = renderer.create(
     <Provider store={store}>
       <Rockets />
-    </Provider>
+    </Provider>,
   ).toJSON();
   expect(tree).toMatchSnapshot();
-})
-
+});
