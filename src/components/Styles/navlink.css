@@ -1,0 +1,33 @@
+.logo--container {
+  display: flex;
+  align-items: center;
+}
+
+.logo--container img {
+  width: 10%;
+}
+
+.nav--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav--menu {
+  list-style: none;
+  display: flex;
+}
+
+.nav--item {
+  color: red;
+  margin: 0 0.5rem;
+}
+
+.item--link {
+  text-decoration: none;
+}
+
+.item--link:focus {
+  color: red;
+  text-decoration: underline;
+}
