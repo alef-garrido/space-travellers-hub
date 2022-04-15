@@ -4,16 +4,17 @@ import axios from 'axios';
 const FETCH_MISSIONS_REQUEST = 'FETCH_MISSIONS_REQUEST';
 const FETCH_MISSIONS_SUCCESS = 'FETCH_MISSIONS_SUCCESS';
 const FETCH_MISSIONS_FAILURE = 'FETCH_MISSIONS_FAILURE';
+const TOGGLE_TRUE = 'TOGGLE_TRUE';
+const TOGGLE_FALSE = 'TOGGLE_FALSE';
 
 // Initial state
 
-const initialState = {
-  loading: false,
-  missions: [],
-  error: ' ',
-};
-
-// Action creators
+// const initialState = {
+//   loading: false,
+//   missions: [],
+//   error: ' ',
+// };
+const initialState = [];
 
 export const fetchMissionsList = () => async (dispatch) => {
   dispatch({
@@ -26,6 +27,7 @@ export const fetchMissionsList = () => async (dispatch) => {
       id: missions.mission_id,
       name: missions.mission_name,
       descriptions: missions.description,
+      reserved: false,
     }));
     dispatch({
       type: FETCH_MISSIONS_SUCCESS,
@@ -39,9 +41,24 @@ export const fetchMissionsList = () => async (dispatch) => {
   }
 };
 
+export const toggleMissionsTrue = (id) => (
+  {
+    type: TOGGLE_TRUE,
+    id,
+  }
+);
+
+export const toggleMissionsFalse = (id) => (
+  {
+    type: TOGGLE_FALSE,
+    id,
+  }
+);
+
 // Reducers
 
 const missionsReducer = (state = initialState, action = {}) => {
+  // const newState = { ...state };
   switch (action.type) {
     case FETCH_MISSIONS_REQUEST:
       return {
@@ -61,6 +78,17 @@ const missionsReducer = (state = initialState, action = {}) => {
         loading: false,
         error: action.payload,
       };
+
+    case TOGGLE_TRUE:
+
+      return {
+        ...state,
+        missions: state.missions.map((i) => {
+          if (i.id !== action.id) return i;
+          return { ...i, reserved: true };
+        }),
+      };
+
     default: return state;
   }
 };

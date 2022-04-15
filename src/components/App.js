@@ -6,11 +6,13 @@ import Rockets from './Rockets';
 import MyProfile from './MyProfile';
 import Missions from './Missions';
 import { loadRockets } from '../Redux/slices/rockets-dux';
+import { fetchMissionsList } from '../Redux/missions/missions';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadRockets());
+    dispatch(fetchMissionsList());
   }, []);
   return (
     <div className="app--container">
