@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMissionsReserved } from '../Redux/missions/missions';
+import { toggleMissionsTrue, toggleMissionsFalse } from '../Redux/missions/missions';
 import './Styles/mission.css';
 
 const missionsContainerStyle = {
@@ -60,16 +60,53 @@ function Missions() {
             </tr>
             {missionLists.missions.map((missions) => (
               <tr key={missions.id} className="table-row">
-                <td className="missions-detail">{missions.name}</td>
-                <td className="missions-detail">{missions.descriptions}</td>
-                <td className="table-btn">
-                  <button type="button" style={missions.reserved ? membershipStyle : notMemberStyle}>{missions.reserved ? 'Active member' : 'Not a member'}</button>
-                  <button type="button" style={missions.reserved ? leaveButtonStyle : joinButtonStyle} onClick={() => dispatch(toggleMissionsReserved(missions.id))}>{missions.reserved ? 'Leave Mission' : 'Join Mission'}</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              <td className="missions-detail">{missions.name}</td>
+              <td className="missions-detail">{missions.descriptions}</td>
+              <td>
+                {
+              missions.reserved
+                ? (
+                  <div className="table-btn">
+                    <button
+                      type="button"
+                      style={missions.reserved
+                        ? membershipStyle : notMemberStyle}
+                    >
+                      Active member
+                    </button>
+                    <button
+                      onClick={() => dispatch(toggleMissionsFalse(missions.id))}
+                      type="button"
+                      style={missions.reserved ? leaveButtonStyle : joinButtonStyle}
+                    >
+                      Leave Mission
+                    </button>
+                  </div>
+                )
+                : (
+                  <div className="table-btn">
+                    <button
+                      type="button"
+                      style={missions.reserved
+                        ? membershipStyle : notMemberStyle}
+                    >
+                      Not a member
+                    </button>
+                    <button
+                      type="button"
+                      style={missions.reserved ? leaveButtonStyle : joinButtonStyle}
+                      onClick={() => dispatch(toggleMissionsTrue(missions.id))}
+                    >
+                      Join mission
+                    </button>
+                  </div>
+                )
+            }
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       ) : <h1>***Loading***</h1>}
     </div>
   );
