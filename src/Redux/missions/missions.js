@@ -4,7 +4,8 @@ import axios from 'axios';
 const FETCH_MISSIONS_REQUEST = 'FETCH_MISSIONS_REQUEST';
 const FETCH_MISSIONS_SUCCESS = 'FETCH_MISSIONS_SUCCESS';
 const FETCH_MISSIONS_FAILURE = 'FETCH_MISSIONS_FAILURE';
-const TOGGLE_RESERVE = 'TOGGLE_RESERVE';
+const TOGGLE_TRUE = 'TOGGLE_TRUE';
+const TOGGLE_FALSE = 'TOGGLE_FALSE';
 
 // Initial state
 
@@ -41,9 +42,16 @@ export const fetchMissionsList = () => async (dispatch) => {
   }
 };
 
-export const toggleMissionsReserved = (id) => (
+export const toggleMissionsTrue = (id) => (
   {
-    type: TOGGLE_RESERVE,
+    type: TOGGLE_TRUE,
+    id,
+  }
+);
+
+export const toggleMissionsFalse = (id) => (
+  {
+    type: TOGGLE_FALSE,
     id,
   }
 );
@@ -51,7 +59,7 @@ export const toggleMissionsReserved = (id) => (
 // Reducers
 
 const missionsReducer = (state = initialState, action = {}) => {
-  const newState = { ...state };
+  // const newState = { ...state };
   switch (action.type) {
     case FETCH_MISSIONS_REQUEST:
       return {
@@ -72,29 +80,19 @@ const missionsReducer = (state = initialState, action = {}) => {
         error: action.payload,
       };
 
-    case TOGGLE_RESERVE:
+    case TOGGLE_TRUE:
 
-      for (let i = 0; i < newState.missions.length; i += 1) {
-        if (newState.missions[i].id === action.id) {
-          newState.missions[i].reserved;
-        }
-      }
-      return newState;
+      return {
+        ...state,
+        mission: state.mission.map((i) => {
+          console.log(i);
+          if (i.id !== action.id) return i;
+          return { ...i, reserved: true };
+        }),
+      };
+
     default: return state;
   }
 };
-
-//     case TOGGLE_RESERVE:
-//       newState.map((mission) => {
-//         if (mission.id === action.id) {
-//           return { ...mission, reserved: !mission.reserved };
-//         } return mission;
-//       });
-//        return newState;
-
-//     default:
-//       return state;
-//   }
-// };
 
 export default missionsReducer;
