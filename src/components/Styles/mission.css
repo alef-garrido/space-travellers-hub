@@ -20,10 +20,6 @@ td {
   font-size: 1.5rem;
 }
 
-.table-row {
-  border: 1px solid red;
-}
-
 .table-row:nth-child(even) {
   background-color: #e8e8e8;
 }

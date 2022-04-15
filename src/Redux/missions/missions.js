@@ -7,13 +7,7 @@ const FETCH_MISSIONS_FAILURE = 'FETCH_MISSIONS_FAILURE';
 const TOGGLE_TRUE = 'TOGGLE_TRUE';
 const TOGGLE_FALSE = 'TOGGLE_FALSE';
 
-// Initial state
 
-// const initialState = {
-//   loading: false,
-//   missions: [],
-//   error: ' ',
-// };
 const initialState = [];
 
 export const fetchMissionsList = () => async (dispatch) => {
