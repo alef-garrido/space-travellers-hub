@@ -24,6 +24,11 @@ td {
   background-color: #e8e8e8;
 }
 
+.table-row{
+  border: 1px solid red;
+
+}
+
 .table-btn {
   display: flex;
   justify-content: center;
