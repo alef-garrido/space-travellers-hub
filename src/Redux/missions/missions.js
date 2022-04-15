@@ -84,8 +84,7 @@ const missionsReducer = (state = initialState, action = {}) => {
 
       return {
         ...state,
-        mission: state.mission.map((i) => {
-          console.log(i);
+        missions: state.missions.map((i) => {
           if (i.id !== action.id) return i;
           return { ...i, reserved: true };
         }),
