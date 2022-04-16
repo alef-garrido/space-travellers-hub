@@ -4,12 +4,27 @@ import './Styles/myProfile.css';
 
 function MyProfile() {
   const user = useSelector((state) => state);
-  console.log(user);
+  const missionList = user.missions.missions;
   const reservedList = user.rockets.list.filter((rocket) => rocket.reserved === true);
   return (
     <div className="profile--container">
       <section className="mission--list-container">
-        <h3>My Missions</h3>
+        {(missionList === undefined)
+          ? (<h1>***Loading***</h1>) : (
+            <div className="rocket--list-container">
+              <h3>My Missions</h3>
+              <ul className="rocket--list">
+                {
+                    missionList.filter((mission) => mission.reserved)
+                      .map((mission) => (
+                        <li className="rocket-item" key={mission.id}>
+                          {mission.name}
+                        </li>
+                      ))
+                  }
+              </ul>
+            </div>
+          )}
         <ul className="rocket--list" />
       </section>
       <section className="rocket--list-container">
