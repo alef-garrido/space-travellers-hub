@@ -10,7 +10,7 @@ function MyProfile() {
     <div className="profile--container">
       <section className="mission--list-container">
         {(missionList === undefined)
-          ? (<h1>***Loading***</h1>) : (
+          ? ('Reserve your first mission') : (
             <div className="mission-cont">
               <h3>My Missions</h3>
               <ul className="mission--list">
@@ -33,7 +33,7 @@ function MyProfile() {
           {
             reservedList
               ? reservedList.map((rocket) => <li className="rocket-item" key={rocket.id}>{rocket.rocket_name}</li>)
-              : 'Reserve your first Rocket'
+              : 'Reserve your first mission'
           }
         </ul>
       </section>
