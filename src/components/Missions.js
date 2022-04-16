@@ -42,11 +42,9 @@ const notMemberStyle = {
 };
 
 function Missions() {
-export default function Missions() {
   const dispatch = useDispatch();
   const missionLists = useSelector((state) => state.missions);
   const loadingStatus = missionLists.loading;
-
   return (
     <div className="mission_container" style={missionsContainerStyle}>
       <div className="line" />
@@ -102,38 +100,6 @@ export default function Missions() {
                   </div>
                 )
             }
-                missions.reserved
-                  ? (
-                    <div className="table-btn">
-                      <button
-                        type="button"
-                      >
-                        Active member
-                      </button>
-                      <button
-                        onClick={() => dispatch(toggleMissionsFalse(missions.id))}
-                        type="button"
-                      >
-                        Leave Mission
-                      </button>
-                    </div>
-                  )
-                  : (
-                    <div className="table-btn">
-                      <button
-                        type="button"
-                      >
-                        Not a member
-                      </button>
-                      <button
-                        onClick={() => dispatch(toggleMissionsTrue(missions.id))}
-                        type="button"
-                      >
-                        Join mission
-                      </button>
-                    </div>
-                  )
-              }
                 </td>
               </tr>
             ))}
@@ -143,3 +109,5 @@ export default function Missions() {
     </div>
   );
 }
+
+export default Missions;
