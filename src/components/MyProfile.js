@@ -4,7 +4,6 @@ import './Styles/myProfile.css';
 
 function MyProfile() {
   const user = useSelector((state) => state);
-  console.log(user);
   const reservedList = user.rockets.list.filter((rocket) => rocket.reserved === true);
   return (
     <div className="profile--container">
