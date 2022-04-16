@@ -7,13 +7,6 @@ const FETCH_MISSIONS_FAILURE = 'FETCH_MISSIONS_FAILURE';
 const TOGGLE_TRUE = 'TOGGLE_TRUE';
 const TOGGLE_FALSE = 'TOGGLE_FALSE';
 
-// Initial state
-
-// const initialState = {
-//   loading: false,
-//   missions: [],
-//   error: ' ',
-// };
 const initialState = [];
 
 export const fetchMissionsList = () => async (dispatch) => {
@@ -58,7 +51,6 @@ export const toggleMissionsFalse = (id) => (
 // Reducers
 
 const missionsReducer = (state = initialState, action = {}) => {
-  // const newState = { ...state };
   switch (action.type) {
     case FETCH_MISSIONS_REQUEST:
       return {
@@ -80,12 +72,20 @@ const missionsReducer = (state = initialState, action = {}) => {
       };
 
     case TOGGLE_TRUE:
-
       return {
         ...state,
         missions: state.missions.map((i) => {
           if (i.id !== action.id) return i;
           return { ...i, reserved: true };
+        }),
+      };
+
+    case TOGGLE_FALSE:
+      return {
+        ...state,
+        missions: state.missions.map((i) => {
+          if (i.id !== action.id) return i;
+          return { ...i, reserved: false };
         }),
       };
 
