@@ -11,13 +11,13 @@ function MyProfile() {
       <section className="mission--list-container">
         {(missionList === undefined)
           ? (<h1>***Loading***</h1>) : (
-            <div className="rocket--list-container">
+            <div className="mission-cont">
               <h3>My Missions</h3>
-              <ul className="rocket--list">
+              <ul className="mission--list">
                 {
                     missionList.filter((mission) => mission.reserved)
                       .map((mission) => (
-                        <li className="rocket-item" key={mission.id}>
+                        <li className="mission-item" key={mission.id}>
                           {mission.name}
                         </li>
                       ))
@@ -25,7 +25,7 @@ function MyProfile() {
               </ul>
             </div>
           )}
-        <ul className="rocket--list" />
+        {/* <ul className="rocket--lis  t" /> */}
       </section>
       <section className="rocket--list-container">
         <h3>My Rockets</h3>
