@@ -11,10 +11,10 @@ function MyProfile() {
         <h3>My Rockets</h3>
         <ul className="rocket--list">
           {
-            rockets
-              ? reservedList.map((rocket) => <li className="rocket-item" key={rocket.id}>{rocket.rocket_name}</li>)
-              : null
-          }
+             rockets
+               ? reservedList.map((rocket) => <li className="rocket-item" key={rocket.id}>{rocket.rocket_name}</li>)
+               : null
+           }
         </ul>
       </section>
     </div>
