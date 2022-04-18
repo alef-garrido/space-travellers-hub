@@ -1,23 +1,44 @@
-.rocket--list-container {
-  width: 50%;
+.profile--container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin: 0 auto;
+  place-items: center;
 }
 
-.rocket--list-container h3 {
-  padding-left: 3rem;
+.mission--list-container {
+  width: 90%;
+  grid-column-start: 1;
+  margin-left: 2rem;
+}
+
+.rocket--list-container {
+  width: 90%;
+  grid-column-start: 2;
+  margin-right: 2rem;
+}
+
+.rocket--list-container h3,
+.mission--list-container h3 {
   font-size: 1.5rem;
 }
 
-.rocket--list {
+.rocket--list,
+.mission--list {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.rocket-item {
-  width: 50%;
-  padding: 1rem 1rem;
+.rocket-item,
+.mission-item {
+  padding: 1rem;
   border: 0.5px solid gray;
+  opacity: 0.8;
   border-top: none;
 }
 
-.rocket-item:first-child {
+.rocket-item:first-child,
+.mission-item:first-child {
   border-top: 0.5px solid gray;
 }
