@@ -7,6 +7,7 @@ import MyProfile from './MyProfile';
 import Missions from './Missions';
 import { loadRockets } from '../Redux/slices/rockets-dux';
 import { fetchMissionsList } from '../Redux/missions/missions';
+import './Styles/app.css';
 
 function App() {
   const dispatch = useDispatch();
