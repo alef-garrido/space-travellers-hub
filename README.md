@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-[Live Demo](URL)Not deployed yet!
+[Live Demo](https://alef-garrido.github.io/space-travellers-hub/)
 
 ## Getting Started
 
