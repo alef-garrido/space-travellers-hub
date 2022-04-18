@@ -21,6 +21,10 @@
   width: 10%;
 }
 
+a {
+  color: black;
+}
+
 .nav--menu {
   list-style: none;
   display: flex;
@@ -31,6 +35,10 @@
   font-family: sans-serif;
   color: black;
   margin: 0 0.5rem;
+}
+
+.nav--item:visited {
+  color: black;
 }
 
 .nav--item:last-child {
